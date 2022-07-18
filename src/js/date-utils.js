@@ -3,5 +3,4 @@ const longFormat = new Intl.DateTimeFormat('en-US', {
   day: 'numeric',
   year: 'numeric'
 });
-
-export const longDate = (date) => longFormat.format(date);
+export const longDate = date => longFormat.format(date);

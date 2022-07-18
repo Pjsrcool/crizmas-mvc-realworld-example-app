@@ -7,27 +7,32 @@ export function User(userData = {}) {
     following: Boolean(userData.following)
   };
 
-  user.update = ({username, email, bio, image}) => {
+  user.update = ({
+    username,
+    email,
+    bio,
+    image
+  }) => {
     currentUser.username = username;
     currentUser.email = email;
     currentUser.bio = bio;
     currentUser.image = image;
   };
 
-  user.setFollowing = (following) => {
+  user.setFollowing = following => {
     user.following = following;
   };
 
   return user;
 }
 
-User.validateUsername = (username) => {
+User.validateUsername = username => {
   if (username && /[\\/]/.test(username)) {
     return 'Username can not contain slashes';
   }
 };
 
-User.validatePassword = (password) => {
+User.validatePassword = password => {
   if (password && password.length < 8) {
     return 'Password is too short (minimum is 8 characters)';
   }
@@ -40,13 +45,21 @@ User.logout = () => {
 
 function CurrentUser() {
   const user = new User();
-
   user.isAuthenticated = false;
 
-  user.updateAuthenticated = ({username, email, bio, image}) => {
+  user.updateAuthenticated = ({
+    username,
+    email,
+    bio,
+    image
+  }) => {
     user.isAuthenticated = true;
-
-    user.update({username, email, bio, image});
+    user.update({
+      username,
+      email,
+      bio,
+      image
+    });
   };
 
   return user;

@@ -1,5 +1,4 @@
-import {User} from './user';
-
+import { User } from './user';
 export function Article(articleData) {
   const article = {
     title: articleData.title,
@@ -15,21 +14,24 @@ export function Article(articleData) {
     comments: null
   };
 
-  article.setFavorite = ({favorited, favoritesCount}) => {
+  article.setFavorite = ({
+    favorited,
+    favoritesCount
+  }) => {
     article.favorited = favorited;
     article.favoritesCount = favoritesCount;
   };
 
-  article.setComments = (comments) => {
+  article.setComments = comments => {
     article.comments = comments;
   };
 
-  article.addComment = (comment) => {
+  article.addComment = comment => {
     article.comments.unshift(comment);
   };
 
-  article.deleteComment = (commentId) => {
-    const index = article.comments.findIndex((comment) => comment.id === commentId);
+  article.deleteComment = commentId => {
+    const index = article.comments.findIndex(comment => comment.id === commentId);
 
     if (index !== -1) {
       article.comments.splice(index, 1);

@@ -8,7 +8,7 @@ const call = (path, method, data, queryObj) => {
     mode: 'cors',
     body: data && JSON.stringify(data),
     headers
-  }).then((response) => {
+  }).then(response => {
     if (!response.ok) {
       return Promise.reject(response);
     }
@@ -17,7 +17,7 @@ const call = (path, method, data, queryObj) => {
   });
 };
 
-const getQueryString = (queryObj) => {
+const getQueryString = queryObj => {
   if (queryObj) {
     const entries = Object.entries(queryObj);
 
@@ -32,17 +32,12 @@ const getQueryString = (queryObj) => {
 };
 
 export const get = (url, queryObj) => call(url, 'get', null, queryObj);
-
 export const post = (url, data, queryObj) => call(url, 'post', data, queryObj);
-
 export const put = (url, data, queryObj) => call(url, 'put', data, queryObj);
-
 export const del = (url, queryObj) => call(url, 'delete', null, queryObj);
-
-export const setAuthToken = (token) => {
+export const setAuthToken = token => {
   headers['Authorization'] = `Token ${token}`;
 };
-
 export const removeAuthToken = () => {
   delete headers['Authorization'];
 };
